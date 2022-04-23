@@ -6,11 +6,16 @@ import {
     LazySlicesPageImage,
     LazySlicesPageSquare,
     LazySlicesPageSquares,
-    LazySlicesPageBrands
-    } from "~~/.nuxt/components";
+    LazySlicesPageBrands,
+    LazySlicesButton
+} from "~~/.nuxt/components";
+
+const route = useRoute()
+
+console.log(route.params.page)
 
 const { client } = usePrismic()
-const { data: homepage } = await useAsyncData('homepage', () => client.getSingle('homepage'))
+const { data: page } = await useAsyncData('page', () => client.getByUID('page', route.params.page as string))
 
 const components = defineSliceZoneComponents({
     'page_title': LazySlicesPageTitle,
@@ -20,14 +25,14 @@ const components = defineSliceZoneComponents({
     'page_brands': LazySlicesPageBrands,
     'page_square': LazySlicesPageSquare,
     'page_squares': LazySlicesPageSquares,
+    'button': LazySlicesButton,
 });
 </script>
 <template>
     <div class="container max-w-screen-lg mx-auto">
         <SliceZone
-            :slices="homepage.data.body"
+            :slices="page.data.body"
             :components="components"
         />
-        {{ homepage.data.body }}
     </div>
 </template>
