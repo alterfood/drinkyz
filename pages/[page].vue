@@ -7,6 +7,7 @@ import {
     LazySlicesPageSquare,
     LazySlicesPageSquares,
     LazySlicesPageBrands,
+    LazySlicesPagePackshotsHeader,
     LazySlicesButton
 } from "~~/.nuxt/components";
 
@@ -23,6 +24,7 @@ const components = defineSliceZoneComponents({
     'page_brand': LazySlicesPageBrands,
     'page_square': LazySlicesPageSquare,
     'page_squares': LazySlicesPageSquares,
+    'page_packshots_header': LazySlicesPagePackshotsHeader,
     'button': LazySlicesButton,
 })
 </script>
