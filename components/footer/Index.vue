@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const route = useRoute()
-console.log(route.params.page)
 
 const props = defineProps({
   bgColor: {
@@ -9,15 +8,9 @@ const props = defineProps({
   }
 })
 
-
-// const bgColor = ref('red')
-
 const { client } = usePrismic()
-// const { data: page } = await useAsyncData('page', () => client.getByUID('page', route.params.page as string))
-// bgColor.value = 'red'
-
-// bgColor.value = computed(() => page?.value?.data?.page_color)
-
+const { data: menu } = await useAsyncData('menuFooter', () => client.getByID('YmUlChMAAF72YTAg'))
+const { data: menuProducts } = await useAsyncData('menuProducts', () => client.getByID('YmUvpxMAAF72YV7Y'))
 </script>
 <template>
     <footer class="text-white bg-blac py-5">
@@ -27,15 +20,23 @@ const { client } = usePrismic()
                     Logo
                 </div>
                 <div class="col-span-3">
-                    <h4>Nos produits</h4>
-                    <ul>
-                        <li v-for="(item, Itemindex) in items">
-                            <NuxtLink :to="'/' + item.slug">{{ item.title }}</NuxtLink>
+                    <h4 class="font-bold mb-1">Nos produits</h4>
+                    <ul class="grid grid-cols-3 text-sm">
+                        <li 
+                            v-for="(menuLink, Itemindex) in menuProducts.data.menu_links"
+                            :key="Itemindex"
+                        >
+                            <NuxtLink v-if="menuLink.link.uid" :to="'/' + menuLink.link.uid">
+                                <PrismicRichText :field="menuLink.label" />    
+                            </NuxtLink>
+                            <NuxtLink v-else :to="menuLink.link.url" target="_blank">
+                                <PrismicRichText :field="menuLink.label" />    
+                            </NuxtLink>
                         </li>
                     </ul>
                 </div>
                 <div class="">
-                    <h4>Contact</h4>
+                    <h4 class="font-bold mb-1">Contact</h4>
                     hello@drinkyz.com<br/>
                     +33 (0) 1 58 18 35 83<br/>
                     4 rue de Sèze 75009 Paris
@@ -48,16 +49,22 @@ const { client } = usePrismic()
             </div>
             <div class="container max-w-screen-lg mx-auto text-center text-xs">
                 <ul class="flex flex-wrap justify-center">
-                    <li class="after:content-['-'] mr-1">Boisson personnalisée </li>
-                    <li class="after:content-['-'] mr-1">boisson publicitaire </li>
-                    <li class="after:content-['-'] mr-1">boissons BIO </li>
-                    <li class="after:content-['-'] mr-1">bouteille d'eau pubilicitaire </li>
-                    <li class="after:content-['-'] mr-1">bouteille d'eau publicitaire </li>
-                    <li class="after:content-['-'] mr-1">canette personnalisée boisson logotée </li>
-                    <li class="after:content-['-'] mr-1">energy drink personnalisé </li>
-                    <li class="after:content-['-'] mr-1">energy drink publicitaire </li>
-                    <li class="after:content-['-'] mr-1">jus de fruit personnalisé </li>
-                    <li>Soda personnalisé</li>
+                    <li 
+                        v-for="(menuLink, Itemindex) in menu.data.menu_links"
+                        :key="Itemindex"
+                        class="flex m-0"
+                    >
+                        <NuxtLink v-if="menuLink.link.uid" :to="'/' + menuLink.link.uid">
+                            <PrismicRichText :field="menuLink.label" />    
+                        </NuxtLink>
+                        <NuxtLink v-else :to="menuLink.link.url" target="_blank">
+                            <PrismicRichText :field="menuLink.label" />    
+                        </NuxtLink>
+                        <span 
+                            v-if="Itemindex < menu.data.menu_links.length - 1"
+                            class="mx-2"
+                        > - </span>
+                    </li>
                 </ul>
                 <p>Mentions légales</p>
             </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">import { usePrismicDocuments } from '@prismicio/vue';
-    const { client } = usePrismic()
-    const { data: menu } = await useAsyncData('home', () => client.getByID('YmUadxMAACUAYQFr'))
+const { client } = usePrismic()
+const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('YmUadxMAACUAYQFr'))
 </script>
 <template>
     <header class="flex justify-between text-gray-100 bg-black font-bold">
