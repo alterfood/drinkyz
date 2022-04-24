@@ -13,7 +13,10 @@
                     :key="index"
                     class="mx-4"
                 >
-                    <NuxtLink :to="'/' + menuLink.link.uid">
+                    <NuxtLink v-if="menuLink.link.uid" :to="'/' + menuLink.link.uid">
+                        <PrismicRichText :field="menuLink.label" />    
+                    </NuxtLink>
+                    <NuxtLink v-else :to="menuLink.link.url" target="_blank">
                         <PrismicRichText :field="menuLink.label" />    
                     </NuxtLink>
                 </li>
