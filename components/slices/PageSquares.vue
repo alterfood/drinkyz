@@ -4,7 +4,6 @@ import { getSliceComponentProps } from "@prismicio/vue"
 defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 </script>
 <template>
-{{ slice.items }}
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <template
             v-for="(item, index) in slice.items"

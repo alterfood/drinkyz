@@ -1,8 +1,26 @@
 <script setup lang="ts">
+const route = useRoute()
+console.log(route.params.page)
+
+const props = defineProps({
+  bgColor: {
+      type: String,
+      default: 'black'
+  }
+})
+
+
+// const bgColor = ref('red')
+
+const { client } = usePrismic()
+// const { data: page } = await useAsyncData('page', () => client.getByUID('page', route.params.page as string))
+// bgColor.value = 'red'
+
+// bgColor.value = computed(() => page?.value?.data?.page_color)
 
 </script>
 <template>
-    <footer class="text-white bg-black py-5">
+    <footer class="text-white bg-blac py-5">
         <div class="container max-w-screen-lg mx-auto pb-10">
             <div class="grid sm: grid-cols-3 md:grid-cols-5">
                 <div class="">
@@ -49,3 +67,8 @@
         </div>
     </footer>
 </template>
+<style>
+    footer {
+        background-color: v-bind(bgColor)!important;
+    }
+</style>
