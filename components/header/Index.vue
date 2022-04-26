@@ -13,7 +13,10 @@ const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('Ym
                     :key="index"
                     class="mx-4"
                 >
-                    <NuxtLink v-if="menuLink.link.uid" :to="'/' + menuLink.link.uid">
+                    <NuxtLink 
+                        v-if="menuLink.link.uid" 
+                        :to="{ name: 'page', params: { page: menuLink.link.uid } }"
+                    >
                         <PrismicRichText :field="menuLink.label" />    
                     </NuxtLink>
                     <NuxtLink v-else :to="menuLink.link.url" target="_blank">

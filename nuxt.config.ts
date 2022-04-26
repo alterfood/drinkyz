@@ -5,7 +5,9 @@ export default defineNuxtConfig({
     typescript: {
         shim: false
     },
+    // buildModules: ['@intlify/nuxt3'],
     modules: [
+        // '@intlify/nuxt3',
         '@nuxtjs/tailwindcss',
         '@nuxtjs/prismic'
     ],
