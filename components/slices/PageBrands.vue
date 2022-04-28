@@ -10,7 +10,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
             :key="index"
         >
             <div class="bg-black">
-                <PrismicImage :field="item.image" />
+                <PrismicImage :field="item.brand_image" />
             </div>
         </template>
     </div>
