@@ -9,7 +9,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
             v-for="(item, index) in slice.items"
             :key="index"
         >
-            <div class="flex justify-center text-center bg-gray-200 p-5">
+            <div class="flex flex-col justify-center text-center bg-gray-200 p-5">
                 <PrismicRichText :field="item.square_title" class="text-3xl font-extrabold" />
                 <PrismicImage :field="item.square_image" />
             </div>
