@@ -9,14 +9,14 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
             v-if="slice.primary.button_link.uid" :to="'/' + slice.primary.button_link.uid"
             class="border-2 border-black px-6 py-3"
         >
-            <PrismicRichText :field="slice.primary.button_label" class="text-2xl font-bold" />
+            <PrismicText :field="slice.primary.button_label" class="text-2xl font-bold" />
         </NuxtLink>
         <NuxtLink v-else 
             :to="slice.primary.button_link.url"
             target="_blank"
             class="border-2 border-black px-6 py-3"
         >
-            <PrismicRichText :field="slice.primary.button_label" />    
+            <PrismicText :field="slice.primary.button_label" />    
         </NuxtLink>
     </div>
 </template>
