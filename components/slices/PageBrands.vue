@@ -5,7 +5,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 </script>
 <template>
     <section class="mb-10">
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 auto-rows-1fr">
             <template
                 v-for="(item, index) in slice.items"
                 :key="index"
