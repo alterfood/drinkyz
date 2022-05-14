@@ -6,7 +6,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 <template>
     <div class="flex justify-center my-12">
         <NuxtLink 
-            v-if="slice.primary.link.uid" :to="'/' + slice.primary.button_link.uid"
+            v-if="slice.primary.button_link.uid" :to="'/' + slice.primary.button_link.uid"
             class="border-2 border-black px-6 py-3"
         >
             <PrismicRichText :field="slice.primary.button_label" class="text-2xl font-bold" />
