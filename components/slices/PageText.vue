@@ -4,7 +4,7 @@ import { getSliceComponentProps } from "@prismicio/vue"
 defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 </script>
 <template>
-    <section class="my-12">
+    <section class="my-12 font-bold">
         <template
             v-for="(item, index) in slice.items"
             :key="index"
