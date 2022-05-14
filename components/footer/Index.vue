@@ -14,7 +14,7 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
 </script>
 <template>
     <footer 
-        class="text-white py-5"
+        class="text-white py-5 px-4 md:px-0"
         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
     >
         <div class="container max-w-screen-lg mx-auto pb-10">
@@ -24,7 +24,7 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
                 </div>
                 <div class="col-span-3">
                     <h4 class="font-bold mb-1">Nos produits</h4>
-                    <ul class="grid grid-cols-3 text-sm">
+                    <ul class="grid grid-cols-1 sm:grid-cols-3 text-sm">
                         <li 
                             v-for="(menuLink, Itemindex) in menuProducts.data.menu_links"
                             :key="Itemindex"
@@ -69,7 +69,11 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
                         > - </span>
                     </li>
                 </ul>
-                <p>Mentions légales</p>
+                <p>
+                    <NuxtLink :to="'/mentions-legales'">
+                        Mentions légales
+                    </NuxtLink>
+                </p>
             </div>
             <div class="w-32 pr-5 flex justify-end content-center">
                 FR

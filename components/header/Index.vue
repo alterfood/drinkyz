@@ -11,13 +11,13 @@ const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('Ym
 </script>
 <template>
     <header 
-        class="flex justify-between text-gray-100 font-bold"
+        class="flex justify-between text-gray-100 font-bold px-4 md:px-0"
         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
     >
         <div></div>
         <div class="flex">
             <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
-            <ul class="flex  py-5">
+            <ul class="flex flex-wrap py-5">
                 <li 
                     v-for="(menuLink, index) in menu.data.menu_links"
                     :key="index"
