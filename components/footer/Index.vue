@@ -17,7 +17,7 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
         <div class="container max-w-screen-lg mx-auto pb-10">
             <div class="grid sm: grid-cols-3 md:grid-cols-5">
                 <div class="">
-                    <img src="logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-36" />
+                    <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-36" />
                 </div>
                 <div class="col-span-3">
                     <h4 class="font-bold mb-1">Nos produits</h4>

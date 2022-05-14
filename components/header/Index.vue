@@ -6,7 +6,7 @@ const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('Ym
     <header class="flex justify-between text-gray-100 bg-black font-bold">
         <div></div>
         <div class="flex">
-            <img src="logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
+            <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
             <ul class="flex  py-5">
                 <li 
                     v-for="(menuLink, index) in menu.data.menu_links"
