@@ -10,7 +10,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 </div>
 </template>
 <style scoped>
-    .flex >>> h2 {
+    .flex :deep(h2) {
         @apply font-bold;
     }
 </style>
