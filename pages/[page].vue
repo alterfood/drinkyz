@@ -4,6 +4,8 @@ import {
     LazySlicesPageTitle,
     LazySlicesPageText,
     LazySlicesPageImage,
+    LazySlicesPageImageText,
+    LazySlicesPageTextImage,
     LazySlicesPageSquare,
     LazySlicesPageSquares,
     LazySlicesPageBrands,
@@ -21,7 +23,8 @@ const components = defineSliceZoneComponents({
     'page_title': LazySlicesPageTitle,
     'page_text': LazySlicesPageText,
     'page_image': LazySlicesPageImage,
-    // 'page_image_text': LazySlicesPageImageText,
+    'image___text': LazySlicesPageImageText,
+    'text___image': LazySlicesPageTextImage,
     'page_brand': LazySlicesPageBrands,
     'page_square': LazySlicesPageSquare,
     'page_squares': LazySlicesPageSquares,
@@ -36,17 +39,26 @@ const components = defineSliceZoneComponents({
       <Meta name="description" :content="page?.data?.meta_description" />
     </Head>
     <Header />
-    <div class="container max-w-screen-lg mx-auto">
+    <div class="container max-w-screen-lg mx-auto px-4 md:px-0">
         <SliceZone
             :slices="page.data.body"
             :components="components"
         />
     </div>
-    <Footer :bgColor="page.data.page_color" />
+    <Footer :bgColor="page?.data?.page_color" />
 </template>
 <style>
+    h2 {
+        @apply font-normal;
+        @apply mb-2;
+    }
+
+    p{ 
+        @apply mb-2;
+    }
+
     em {
-        background-color: v-bind(page.data.page_color)!important;
+        background-color: v-bind(page?.data?.page_color)!important;
         color: white;
         @apply not-italic;
     }
