@@ -9,7 +9,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
             :to="{ name: 'page', params: { page: slice.primary.square_link.uid } }"
         >
             <div class="p-4 bg-gray-200 flex gap-6">
-                <div class="">
+                <div class="text-center">
                     <PrismicRichText :field="slice.primary.square_title" class="text-3xl font-extrabold sm:hidden" />
                     <PrismicImage :field="slice.primary.square_image" />
                 </div>
