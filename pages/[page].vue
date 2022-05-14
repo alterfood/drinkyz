@@ -49,7 +49,7 @@ const components = defineSliceZoneComponents({
 </template>
 <style>
     h2 {
-        @apply font-normal;
+        @apply font-light;
         @apply mb-2;
     }
 
@@ -61,6 +61,10 @@ const components = defineSliceZoneComponents({
         background-color: v-bind(page?.data?.page_color)!important;
         color: white;
         @apply not-italic;
+    }
+
+    ul {
+        @apply mb-6;
     }
 
     li {
