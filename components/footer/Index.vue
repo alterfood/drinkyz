@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const props = defineProps({
+defineProps({
   bgColor: {
       type: String,
       default: 'black'
@@ -13,7 +13,10 @@ const { data: menu } = await useAsyncData('menuFooter', () => client.getByID('Ym
 const { data: menuProducts } = await useAsyncData('menuProducts', () => client.getByID('YmUvpxMAAF72YV7Y'))
 </script>
 <template>
-    <footer class="text-white bg-blac py-5">
+    <footer 
+        class="text-white py-5"
+        :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
+    >
         <div class="container max-w-screen-lg mx-auto pb-10">
             <div class="grid sm: grid-cols-3 md:grid-cols-5">
                 <div class="">
@@ -75,7 +78,7 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
     </footer>
 </template>
 <style>
-    footer {
+    footer.color {
         background-color: v-bind(bgColor)!important;
     }
 </style>

@@ -1,9 +1,19 @@
-<script setup lang="ts">import { usePrismicDocuments } from '@prismicio/vue';
+<script setup lang="ts">
+defineProps({
+  bgColor: {
+      type: String,
+      default: 'black'
+  }
+})
+
 const { client } = usePrismic()
 const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('YmUadxMAACUAYQFr'))
 </script>
 <template>
-    <header class="flex justify-between text-gray-100 bg-black font-bold">
+    <header 
+        class="flex justify-between text-gray-100 font-bold"
+        :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
+    >
         <div></div>
         <div class="flex">
             <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
@@ -30,3 +40,8 @@ const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('Ym
         </div>
     </header>
 </template>
+<style>
+    header.color {
+        background-color: v-bind(bgColor);
+    }
+</style>

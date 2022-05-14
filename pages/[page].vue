@@ -38,7 +38,7 @@ const components = defineSliceZoneComponents({
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description" />
     </Head>
-    <Header />
+    <Header :bgColor="page?.data?.page_color" />
     <div class="container max-w-screen-lg mx-auto px-4 md:px-0">
         <SliceZone
             :slices="page.data.body"

@@ -1,7 +1,11 @@
 module.exports = {
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'menub': '#333333',
+      }
+    },
   },
   plugins: [
     // require('@tailwindcss/typography'),
