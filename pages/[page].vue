@@ -46,7 +46,7 @@ const components = defineSliceZoneComponents({
 </template>
 <style>
     em {
-        background-color: red;
+        background-color: v-bind(page.data.page_color)!important;
         color: white;
         @apply not-italic;
     }
