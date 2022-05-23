@@ -29,12 +29,12 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
                             v-for="(menuLink, Itemindex) in menuProducts.data.menu_links"
                             :key="Itemindex"
                         >
-                            <a 
+                            <NuxtLink
                                 v-if="menuLink.link.uid" 
-                                :href="'/' + menuLink.link.uid"
+                                :to="'/' + menuLink.link.uid"
                             >
                                 <PrismicRichText :field="menuLink.label" />    
-                            </a>
+                            </NuxtLink>
                             <NuxtLink v-else :to="menuLink.link.url" target="_blank">
                                 <PrismicRichText :field="menuLink.label" />    
                             </NuxtLink>
@@ -63,12 +63,12 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
                         :key="Itemindex"
                         class="flex m-0"
                     >
-                        <a 
+                        <NuxtLink 
                             v-if="menuLink.link.uid" 
-                            :href="'/' + menuLink.link.uid"
+                            :to="'/' + menuLink.link.uid"
                         >
                             <PrismicRichText :field="menuLink.label" />    
-                        </a>
+                        </NuxtLink>
                         <NuxtLink v-else :to="menuLink.link.url" target="_blank">
                             <PrismicRichText :field="menuLink.label" />    
                         </NuxtLink>

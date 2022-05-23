@@ -17,9 +17,19 @@ import {
 } from "~~/.nuxt/components";
 
 const route = useRoute()
-
 const { client } = usePrismic()
-const { data: page } = await useAsyncData('page', () => client.getByUID('page', route.params.page as string))
+
+const { data: page, refresh } = await useAsyncData(
+    route.params.page as string,
+    () => client.getByUID('page', route.params.page as string),
+)
+
+watch(
+  () => [route.params.page],
+  async() => {
+    refresh
+  },
+)
 
 const components = defineSliceZoneComponents({
     'page_title': LazySlicesPageTitle,

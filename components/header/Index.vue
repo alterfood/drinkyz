@@ -16,19 +16,21 @@ const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('Ym
     >
         <div></div>
         <div class="flex">
-            <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
+            <NuxtLink to="/">
+                <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
+            </NuxtLink>
             <ul class="flex flex-wrap py-5">
                 <li 
                     v-for="(menuLink, index) in menu.data.menu_links"
                     :key="index"
                     class="mx-4"
                 >
-                    <a 
+                    <NuxtLink
                         v-if="menuLink.link.uid" 
-                        :href="menuLink.link.uid"
+                        :to="menuLink.link.uid"
                     >
                         <PrismicRichText :field="menuLink.label" />    
-                    </a>
+                    </NuxtLink>
                     <NuxtLink v-else :to="menuLink.link.url" target="_blank">
                         <PrismicRichText :field="menuLink.label" />    
                     </NuxtLink>

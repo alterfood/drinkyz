@@ -5,8 +5,8 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 </script>
 <template>
     <section class="my-6">
-        <a 
-            :href="slice.primary.square_link.uid"
+        <NuxtLink 
+            :to="slice.primary.square_link.uid"
         >
             <div class="p-4 bg-gray-200 flex gap-6">
                 <div class="text-center">
@@ -18,6 +18,6 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
                     <PrismicRichText :field="slice.primary.square_text" />
                 </div>
             </div>
-        </a>
+        </NuxtLink>
     </section>
 </template>
