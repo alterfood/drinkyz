@@ -10,14 +10,14 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
                 v-for="(item, index) in slice.items"
                 :key="index"
             >
-                <NuxtLink 
-                    :to="{ name: 'page', params: { page: item.square_link.uid } }"
+                <a 
+                    :href="item.square_link.uid"
                 >
                     <div class="flex flex-col justify-center text-center bg-gray-200 p-5">
                         <PrismicRichText :field="item.square_title" class="text-3xl font-extrabold" />
                         <PrismicImage :field="item.square_image" />
                     </div>
-                </NuxtLink>
+                </a>
             </template>
         </div>
     </section>

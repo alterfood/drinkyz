@@ -33,6 +33,7 @@ useHead({
 
 </script>
 <template>
+  <div>
     <Head>
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description" />
@@ -45,4 +46,5 @@ useHead({
         />
     </div>
     <Footer :bgColor="page?.data?.page_color" />
+  </div>
 </template>

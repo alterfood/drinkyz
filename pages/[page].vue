@@ -38,18 +38,20 @@ const components = defineSliceZoneComponents({
 })
 </script>
 <template>
-    <Head>
-      <Title>{{ page?.data?.meta_title }}</Title>
-      <Meta name="description" :content="page?.data?.meta_description" />
-    </Head>
-    <Header :bgColor="page?.data?.page_color" />
-    <div class="container max-w-screen-lg mx-auto px-4 md:px-0">
-        <SliceZone
-            :slices="page.data.body"
-            :components="components"
-        />
+    <div>
+        <Head>
+            <Title>{{ page?.data?.meta_title }}</Title>
+            <Meta name="description" :content="page?.data?.meta_description" />
+        </Head>
+        <Header :bgColor="page?.data?.page_color" />
+        <div class="container max-w-screen-lg mx-auto px-4 md:px-0">
+            <SliceZone
+                :slices="page.data.body"
+                :components="components"
+            />
+        </div>
+        <Footer :bgColor="page?.data?.page_color" />
     </div>
-    <Footer :bgColor="page?.data?.page_color" />
 </template>
 <style>
     h2 {
