@@ -2,11 +2,17 @@
 const route = useRoute()
 
 defineProps({
+    page: {
+        type: Object,
+        default: () => ({}),
+    },
   bgColor: {
       type: String,
       default: 'black'
   }
 })
+
+const locales = useLocales()
 
 const { client } = usePrismic()
 const { data: menu } = await useAsyncData('menuFooter', () => client.getByID('YmUlChMAAF72YTAg'))
@@ -85,7 +91,11 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
                 </p>
             </div>
             <div class="sm:w-32 sm:pr-5 flex justify-center sm:justify-end content-center text-center">
-                FR
+                <template v-for="language of page.alternate_languages">
+                    <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                        {{ locales[language.lang] }}
+                    </NuxtLink>
+                </template>
             </div>
         </div>
     </footer>

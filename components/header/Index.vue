@@ -1,13 +1,29 @@
 <script setup lang="ts">
 defineProps({
+    page: {
+        type: Object,
+        default: () => ({}),
+    },
   bgColor: {
       type: String,
       default: 'black'
   }
 })
 
+const route = useRoute()
+const currentLocale = useCurrentLocale()
+const locales = ref(useLocales())
+
+
 const { client } = usePrismic()
-const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('YmUadxMAACUAYQFr'))
+const { data: menu, refresh } = await useAsyncData('menuHeader', () => client.getByID('YmUadxMAACUAYQFr'))
+
+watch(
+  () => [route.fullPath],
+  async() => {
+    refresh
+  },
+)
 </script>
 <template>
     <header 
@@ -38,7 +54,11 @@ const { data: menu } = await useAsyncData('menuHeader', () => client.getByID('Ym
             </ul>
         </div>
         <div class="w-32 pr-5 py-5 flex justify-end content-center">
-            <NuxtLink to="/">FR</NuxtLink>
+            <template v-for="(language, index) of page.alternate_languages">
+                <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                    {{ locales[language.lang] }}
+                </NuxtLink>
+            </template>
         </div>
     </header>
 </template>

@@ -3,9 +3,10 @@ import { defineSliceZoneComponents } from "@prismicio/vue"
 import { LazySlicesPageTitle, LazySlicesPageText, LazySlicesPageImage, LazySlicesPageSquares, LazySlicesPageBrands } from "~~/.nuxt/components";
 
 const route = useRoute()
-
 const { client } = usePrismic()
-const { data: page, refresh } = await useAsyncData('home-fr', () => client.getByUID('page', 'home', { lang: 'fr-fr' }))
+const currentLocale = useCurrentLocale()
+
+const { data: page, refresh } = await useAsyncData('home-en', () => client.getByUID('page', 'home', { lang: currentLocale }))
 
 watch(
   () => [route.fullPath],
@@ -47,13 +48,19 @@ useHead({
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description" />
     </Head>
-    <Header :bgColor="page?.data?.page_color" />
+    <Header 
+      :page="page"
+      :bgColor="page?.data?.page_color" 
+    />
     <div class="container max-w-screen-lg mx-auto px-4 md:px-0">
         <SliceZone
             :slices="page.data.body"
             :components="components"
         />
     </div>
-    <Footer :bgColor="page?.data?.page_color" />
+    <Footer 
+      :page="page"
+      :bgColor="page?.data?.page_color" 
+    />
   </div>
 </template>
