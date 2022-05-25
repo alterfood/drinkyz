@@ -13,10 +13,11 @@ defineProps({
 })
 
 const locales = useLocales()
+const currentLocale = useCurrentLocale()
 
 const { client } = usePrismic()
-const { data: menu } = await useAsyncData('menuFooter', () => client.getByID('YmUlChMAAF72YTAg'))
-const { data: menuProducts } = await useAsyncData('menuProducts', () => client.getByID('YmUvpxMAAF72YV7Y'))
+const { data: menu } = await useAsyncData(`menuFooter-${currentLocale}`, () => client.getByUID('menu', 'menu-footer', { lang: currentLocale }))
+const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}`, () => client.getByUID('menu', 'menu-products', { lang: currentLocale }))
 </script>
 <template>
     <footer 
@@ -29,7 +30,7 @@ const { data: menuProducts } = await useAsyncData('menuProducts', () => client.g
                     <img src="/logo.svg" alt="Drinkyz.com" class="mx-auto sm:mr-10 mb-6 sm:mb-2 h-36" />
                 </div>
                 <div class="col-span-3">
-                    <h4 class="font-bold mb-1">Nos produits</h4>
+                    <h4 class="font-bold mb-1">{{ menuProducts.data.title[0].text }}</h4>
                     <ul class="grid grid-cols-2 sm:grid-cols-3 text-sm">
                         <li 
                             v-for="(menuLink, Itemindex) in menuProducts.data.menu_links"
