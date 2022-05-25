@@ -15,11 +15,11 @@ import {
     LazySlicesPageContactFormSuccess,
     LazySlicesButton
 } from "~~/.nuxt/components";
-import { useCurrentLocale } from "../../composables/useCurrentLocale";
 
 const route = useRoute()
-const { client } = usePrismic()
 const currentLocale = useCurrentLocale()
+
+const { client } = usePrismic()
 
 const { data: page, refresh } = await useAsyncData(
     route.fullPath as string,
