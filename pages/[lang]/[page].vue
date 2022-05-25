@@ -54,6 +54,13 @@ const components = defineSliceZoneComponents({
         <Head>
             <Title>{{ page?.data?.meta_title }}</Title>
             <Meta name="description" :content="page?.data?.meta_description" />
+            <Meta http-equiv="content-language" :content="page.lang" />
+            <Link 
+                v-for="language of page.alternate_languages"
+                rel="alternate"
+                :href="`/${language.lang}/${language.uid}`"
+                :hreflang="language.lang"
+            />
         </Head>
         <Header 
             :page="page"

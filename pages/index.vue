@@ -26,7 +26,6 @@ useHead({
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
   meta: [
-    { name: 'description', content: 'My amazing site.' },
     { name: 'msapplication-TileColor', content: '#da532c' },
     { name: 'theme-color', content: '#ffffff'}
   ],
@@ -46,6 +45,12 @@ useHead({
     <Head>
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description" />
+      <Link 
+        v-for="language of page.alternate_languages"
+        rel="alternate"
+        :href="`/${language.lang}/${language.uid}`"
+        :hreflang="language.lang"
+      />
     </Head>
     <Header 
       :page="page"
