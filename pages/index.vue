@@ -3,6 +3,7 @@ import { defineSliceZoneComponents } from "@prismicio/vue"
 import { LazySlicesPageTitle, LazySlicesPageText, LazySlicesPageImage, LazySlicesPageSquares, LazySlicesPageBrands } from "~~/.nuxt/components";
 
 const route = useRoute()
+const locales = useLocales()
 
 const { client } = usePrismic()
 const { data: page, refresh } = await useAsyncData('home-fr', () => client.getByUID('page', 'home', { lang: 'fr-fr' }))
@@ -50,7 +51,7 @@ useHead({
         v-for="language of page.alternate_languages"
         rel="alternate"
         :href="`/${language.lang}/${language.uid}`"
-        :hreflang="language.lang"
+        :hreflang="locales[language.lang]"
       />
     </Head>
     <Header 

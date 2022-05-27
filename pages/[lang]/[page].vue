@@ -61,7 +61,7 @@ const components = defineSliceZoneComponents({
                 v-for="language of page.alternate_languages"
                 rel="alternate"
                 :href="`/${language.lang}/${language.uid}`"
-                :hreflang="language.lang"
+                :hreflang="locales[language.lang]"
             />
             <Script src="https://www.google.com/recaptcha/api.js?render=6LcJJBsgAAAAAPlaOYyOjh04pfEwx-jByFXbZI4n" />
         </Head>
