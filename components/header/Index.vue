@@ -43,7 +43,7 @@ watch(
                 >
                     <NuxtLink
                         v-if="menuLink.link.uid" 
-                        :to="menuLink.link.uid"
+                        :to="`/${currentLocale}/${menuLink.link.uid}`"
                     >
                         <PrismicRichText :field="menuLink.label" />    
                     </NuxtLink>

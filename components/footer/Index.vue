@@ -38,7 +38,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                         >
                             <NuxtLink
                                 v-if="menuLink.link.uid" 
-                                :to="'/' + menuLink.link.uid"
+                                :to="`/${currentLocale}/${menuLink.link.uid}`"
                             >
                                 <PrismicRichText :field="menuLink.label" />    
                             </NuxtLink>
@@ -72,7 +72,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                     >
                         <NuxtLink 
                             v-if="menuLink.link.uid" 
-                            :to="'/' + menuLink.link.uid"
+                            :to="`/${currentLocale}/${menuLink.link.uid}`"
                         >
                             <PrismicRichText :field="menuLink.label" />    
                         </NuxtLink>
