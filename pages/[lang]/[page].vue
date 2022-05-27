@@ -17,6 +17,7 @@ import {
 } from "~~/.nuxt/components";
 
 const route = useRoute()
+const config = useRuntimeConfig()
 const currentLocale = useCurrentLocale()
 const locales = useLocales()
 
@@ -60,7 +61,7 @@ const components = defineSliceZoneComponents({
             <Link 
                 v-for="language of page.alternate_languages"
                 rel="alternate"
-                :href="`/${language.lang}/${language.uid}`"
+                :href="`${config.BASE_URL}/${language.lang}/${language.uid}`"
                 :hreflang="locales[language.lang]"
             />
             <Script src="https://www.google.com/recaptcha/api.js?render=6LcJJBsgAAAAAPlaOYyOjh04pfEwx-jByFXbZI4n" />
