@@ -43,6 +43,7 @@ useHead({
 <template>
   <div>
     <Head>
+      <Html lang="fr" />
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description" />
       <Link 

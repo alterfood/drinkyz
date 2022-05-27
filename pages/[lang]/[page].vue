@@ -18,6 +18,7 @@ import {
 
 const route = useRoute()
 const currentLocale = useCurrentLocale()
+const locales = useLocales()
 
 const { client } = usePrismic()
 
@@ -52,6 +53,7 @@ const components = defineSliceZoneComponents({
 <template>
     <div>
         <Head>
+            <Html :lang="locales[page.lang]" />
             <Title>{{ page?.data?.meta_title }}</Title>
             <Meta name="description" :content="page?.data?.meta_description" />
             <Meta http-equiv="content-language" :content="page.lang" />
@@ -61,6 +63,7 @@ const components = defineSliceZoneComponents({
                 :href="`/${language.lang}/${language.uid}`"
                 :hreflang="language.lang"
             />
+            <Script src="https://www.google.com/recaptcha/api.js?render=6LcJJBsgAAAAAPlaOYyOjh04pfEwx-jByFXbZI4n" />
         </Head>
         <Header 
             :page="page"
