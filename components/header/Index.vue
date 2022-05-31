@@ -32,14 +32,14 @@ watch(
     >
         <div></div>
         <div class="flex">
-            <NuxtLink to="/">
+            <NuxtLink to="/" class="flex items-center">
                 <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
             </NuxtLink>
-            <ul class="flex flex-wrap py-5 marker:text-transparent">
+            <ul class="flex flex-wrap py-2 sm:py-5 mb-0 marker:text-transparent">
                 <li 
                     v-for="(menuLink, index) in menu.data.menu_links"
                     :key="index"
-                    class="mx-4"
+                    class="mx-4 my-2 sm:my-0"
                 >
                     <NuxtLink
                         v-if="menuLink.link.uid" 
