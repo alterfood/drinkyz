@@ -35,7 +35,7 @@ watch(
             <NuxtLink to="/">
                 <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
             </NuxtLink>
-            <ul class="flex flex-wrap py-5">
+            <ul class="flex flex-wrap py-5 marker:text-transparent">
                 <li 
                     v-for="(menuLink, index) in menu.data.menu_links"
                     :key="index"
@@ -45,10 +45,10 @@ watch(
                         v-if="menuLink.link.uid" 
                         :to="`/${currentLocale}/${menuLink.link.uid}`"
                     >
-                        <PrismicRichText :field="menuLink.label" />    
+                        <PrismicText :field="menuLink.label" />    
                     </NuxtLink>
                     <NuxtLink v-else :to="menuLink.link.url" target="_blank">
-                        <PrismicRichText :field="menuLink.label" />    
+                        <PrismicText :field="menuLink.label" />    
                     </NuxtLink>
                 </li>
             </ul>
