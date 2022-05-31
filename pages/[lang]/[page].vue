@@ -20,7 +20,6 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const currentLocale = useCurrentLocale()
 const locales = useLocales()
-
 const { client } = usePrismic()
 
 const { data: page, refresh } = await useAsyncData(
@@ -93,7 +92,7 @@ const components = defineSliceZoneComponents({
     }
 
     em {
-        background-color: v-bind(page?.data?.page_color)!important;
+        background-color: v-bind('page.data.page_color')!important;
         color: white;
         @apply not-italic;
     }
