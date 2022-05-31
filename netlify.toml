@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/"
+  to = "/en-en"
+  status = 200
+  conditions = {Language = ["en"]}
