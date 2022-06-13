@@ -1,31 +1,12 @@
 <script setup lang="ts">
 import { getSliceComponentProps } from "@prismicio/vue"
+
 const { $recaptcha } = useNuxtApp()
 
 defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 
 const router = useRouter()
 const currentLocale = useCurrentLocale()
-
-// const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
-
-// const recaptcha = async () => {
-//       // (optional) Wait until recaptcha has been loaded.
-//       await recaptchaLoaded()
-
-//       // Execute reCAPTCHA with action "login".
-//       const token = await executeRecaptcha('login')
-
-//       // Do stuff with the received token.
-//     }
-
-
-// try {
-//         await $recaptcha.init();
-//     } catch (err) {
-//         throw new Error(`index# Problem initializing ReCaptcha: ${err}.`);
-//     }
-
 
 const contactForm = reactive({
     lastName: '',
@@ -43,20 +24,30 @@ const contactForm = reactive({
 
 
 
-const submitContactForm = () => {
-    grecaptcha.ready(function() {
-        grecaptcha.execute('6LcJJBsgAAAAAPlaOYyOjh04pfEwx-jByFXbZI4n', {action: 'submit'}).then(function(token) {
-            console.log(contactForm)
-            $fetch('/api/contact', { method: 'POST', body: { contactForm } }).then(() => {
-                router.push(`/${currentLocale}/contact-success`)
-            })
-    })
-})
-}
+// const submitContactForm = () => {
+//     // $recaptcha.ready(function() {
+//     //     $recaptcha.execute('6LcJJBsgAAAAAPlaOYyOjh04pfEwx-jByFXbZI4n', {action: 'submit'}).then(function(token) {
+//     //         console.log(contactForm)
+//     //         $fetch('/api/contact', { method: 'POST', body: { contactForm } }).then(() => {
+//     //             router.push(`/${currentLocale}/contact-success`)
+//     //         })
+//     //     })
+//     // })
+//     fetch("/", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//         body: new URLSearchParams(contactForm).toString()
+//     }).then(() => router.push(`/${currentLocale}/contact-success`));
+// }
 </script>
 <template>
     <section class="mb-16">
-        <form @submit.prevent="submitContactForm">
+        <form 
+            name="contact"
+            :action="`/${currentLocale}/contact-success`"
+            method="POST"
+            data-netlify="true"
+        >
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-4">
                 <div class="flex flex-col">
                     <label class="mb-1">Nom*</label>
