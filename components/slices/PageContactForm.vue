@@ -46,8 +46,14 @@ const contactForm = reactive({
             name="contact"
             :action="`/${currentLocale}/contact-success`"
             method="POST"
+            netlify-honeypot="bot-field"
             data-netlify="true"
         >
+            <p class="invisible">
+                <label>
+                Don’t fill this out if you’re human: <input name="bot-field" />
+                </label>
+            </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-4">
                 <div class="flex flex-col">
                     <label class="mb-1">Nom*</label>
