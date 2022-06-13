@@ -57,45 +57,45 @@ const contactForm = reactive({
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-4">
                 <div class="flex flex-col">
                     <label class="mb-1">Nom*</label>
-                    <input v-model="contactForm.lastName" class="bg-gray-200 p-2" required>
+                    <input name="lastName" v-model="contactForm.lastName" class="bg-gray-200 p-2" required>
                 </div>
                 <div class="flex flex-col">
                     <label class="mb-1">Prénom*</label>
-                    <input v-model="contactForm.firstName" class="bg-gray-200 p-2" required>
+                    <input name="firstName" v-model="contactForm.firstName" class="bg-gray-200 p-2" required>
                 </div>
 
                 <div class="flex flex-col">
                     <label class="mb-1">Entreprise</label>
-                    <input v-model="contactForm.company" class="bg-gray-200 p-2">
+                    <input name="company" v-model="contactForm.company" class="bg-gray-200 p-2">
                 </div>
                 <div class="flex flex-col">
                     <label class="mb-1">Mail*</label>
-                    <input v-model="contactForm.email" class="bg-gray-200 p-2" required>
+                    <input name="email" v-model="contactForm.email" class="bg-gray-200 p-2" required>
                 </div>
 
                 <div class="flex flex-col">
                     <label class="mb-1">Téléphone</label>
-                    <input v-model="contactForm.phone" class="bg-gray-200 p-2">
+                    <input name="phone" v-model="contactForm.phone" class="bg-gray-200 p-2">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-4">
                 <div class="flex flex-col">
                     <label class="mb-1">Produit</label>
-                    <input v-model="contactForm.products" class="bg-gray-200 p-2">
+                    <input name="products" v-model="contactForm.products" class="bg-gray-200 p-2">
                 </div>
                 <div class="flex flex-col">
                     <label class="mb-1">Quantité</label>
-                    <input v-model="contactForm.quantity" class="bg-gray-200 p-2">
+                    <input name="quantity" v-model="contactForm.quantity" class="bg-gray-200 p-2">
                 </div>
 
                 <div class="flex flex-col">
                     <label class="mb-1">Ville de livraison</label>
-                    <input v-model="contactForm.shippingCity" class="bg-gray-200 p-2">
+                    <input name="shippingCity" v-model="contactForm.shippingCity" class="bg-gray-200 p-2">
                 </div>
                 <div class="flex flex-col">
                     <label class="mb-1">Date de livraison*</label>
-                    <input v-model="contactForm.shippingDate" class="bg-gray-200 p-2">
+                    <input name="shippingDate" v-model="contactForm.shippingDate" class="bg-gray-200 p-2">
                 </div>
             </div>
 
@@ -103,7 +103,7 @@ const contactForm = reactive({
                 <div>
                     <div class="flex flex-col">
                         <label class="mb-1">Sujet*</label>
-                        <input v-model="contactForm.subject" class="bg-gray-200 p-2" required>
+                        <input name="subject" v-model="contactForm.subject" class="bg-gray-200 p-2" required>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@ const contactForm = reactive({
             <div class="flex flex-col gap-x-8 gap-y-4 mb-4">
                 <div class="flex flex-col">
                     <label class="mb-1">Message*</label>
-                    <textarea v-model="contactForm.message" class="bg-gray-200 p-2" rows="8" required />
+                    <textarea name="message" v-model="contactForm.message" class="bg-gray-200 p-2" rows="8" required />
                 </div>
             </div>
 
