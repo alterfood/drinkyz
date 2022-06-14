@@ -52,6 +52,7 @@ const contactForm = reactive({
         <form 
             name="contact"
             method="POST"
+            :action="`/${currentLocale}/contact-success`"
             netlify-honeypot="bot-field"
             netlify
         >
