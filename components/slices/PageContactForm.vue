@@ -25,18 +25,25 @@ const contactForm = reactive({
 
 
 // const submitContactForm = () => {
-//     // $recaptcha.ready(function() {
-//     //     $recaptcha.execute('6LcJJBsgAAAAAPlaOYyOjh04pfEwx-jByFXbZI4n', {action: 'submit'}).then(function(token) {
-//     //         console.log(contactForm)
-//     //         $fetch('/api/contact', { method: 'POST', body: { contactForm } }).then(() => {
-//     //             router.push(`/${currentLocale}/contact-success`)
-//     //         })
-//     //     })
-//     // })
+//     let formName = this.$refs.formTag.getAttribute('name');
+		
+//     let formData = new FormData();
+//     formData.append('firstName', contactForm.firstName);
+//     formData.append('lastName', contactForm.lastName);
+//     formData.append('company', contactForm.company);
+//     formData.append('email', contactForm.email);
+//     formData.append('phone', contactForm.phone);
+//     formData.append('products', contactForm.products);
+//     formData.append('quantity', contactForm.quantity);
+//     formData.append('shippingCity', contactForm.shippingCity);
+//     formData.append('shippingDate', contactForm.shippingDate);
+//     formData.append('subject', contactForm.subject);
+//     formData.append('message', contactForm.message);
+
 //     fetch("/", {
 //         method: "POST",
-//         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-//         body: new URLSearchParams(contactForm).toString()
+//         // headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//         body: formData
 //     }).then(() => router.push(`/${currentLocale}/contact-success`));
 // }
 </script>
@@ -48,9 +55,10 @@ const contactForm = reactive({
             netlify-honeypot="bot-field"
             netlify
         >
+            <input type="hidden" name="form-name" value="contact" />
             <p class="invisible">
                 <label>
-                Don’t fill this out if you’re human: <input name="bot-field" />
+                Don't fill this out if you're human: <input name="bot-field" />
                 </label>
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-4">
