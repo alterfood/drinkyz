@@ -46,7 +46,7 @@ const contactForm = reactive({
             name="contact"
             method="POST"
             netlify-honeypot="bot-field"
-            data-netlify="true"
+            netlify
         >
             <p class="invisible">
                 <label>
