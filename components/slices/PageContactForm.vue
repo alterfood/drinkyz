@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { getSliceComponentProps } from "@prismicio/vue"
 
-const { $recaptcha } = useNuxtApp()
-
 defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 
 const router = useRouter()
@@ -21,31 +19,6 @@ const contactForm = reactive({
     subject: '',
     message: '',
 })
-
-
-
-// const submitContactForm = () => {
-//     let formName = this.$refs.formTag.getAttribute('name');
-		
-//     let formData = new FormData();
-//     formData.append('firstName', contactForm.firstName);
-//     formData.append('lastName', contactForm.lastName);
-//     formData.append('company', contactForm.company);
-//     formData.append('email', contactForm.email);
-//     formData.append('phone', contactForm.phone);
-//     formData.append('products', contactForm.products);
-//     formData.append('quantity', contactForm.quantity);
-//     formData.append('shippingCity', contactForm.shippingCity);
-//     formData.append('shippingDate', contactForm.shippingDate);
-//     formData.append('subject', contactForm.subject);
-//     formData.append('message', contactForm.message);
-
-//     fetch("/", {
-//         method: "POST",
-//         // headers: { "Content-Type": "application/x-www-form-urlencoded" },
-//         body: formData
-//     }).then(() => router.push(`/${currentLocale}/contact-success`));
-// }
 </script>
 <template>
     <section class="mb-16">

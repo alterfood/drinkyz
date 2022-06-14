@@ -63,7 +63,6 @@ const components = defineSliceZoneComponents({
                 :href="`${config.BASE_URL}/${language.lang}/${language.uid}`"
                 :hreflang="locales[language.lang]"
             />
-            <Script src="https://www.google.com/recaptcha/api.js?render=6LcJJBsgAAAAAPlaOYyOjh04pfEwx-jByFXbZI4n" />
         </Head>
         <Header 
             :page="page"
