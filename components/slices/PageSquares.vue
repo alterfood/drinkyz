@@ -2,6 +2,8 @@
 import { getSliceComponentProps } from "@prismicio/vue"
 
 defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
+
+const currentLocale = useCurrentLocale()
 </script>
 <template>
     <section class="my-6">
@@ -11,7 +13,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
                 :key="index"
             >
                 <NuxtLink 
-                    :to="item.square_link.uid"
+                    :to="`/${currentLocale}/${item.square_link.uid}`"
                 >
                     <div class="flex flex-col justify-center text-center bg-gray-200 p-5">
                         <PrismicRichText :field="item.square_title" class="text-3xl font-extrabold" />

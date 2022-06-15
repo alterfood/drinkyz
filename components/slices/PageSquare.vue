@@ -2,11 +2,13 @@
 import { getSliceComponentProps } from "@prismicio/vue"
 
 defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
+
+const currentLocale = useCurrentLocale()
 </script>
 <template>
     <section class="my-6">
         <NuxtLink 
-            :to="slice.primary.square_link.uid"
+            :to="`/${currentLocale}/${slice.primary.square_link.uid}`"
         >
             <div class="p-4 bg-gray-200 flex gap-6">
                 <div class="text-center">
