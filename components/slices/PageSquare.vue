@@ -6,7 +6,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 const currentLocale = useCurrentLocale()
 </script>
 <template>
-    <section class="my-6">
+    <section class="container max-w-screen-lg mx-auto px-4 md:px-0 my-6">
         <NuxtLink 
             :to="`/${currentLocale}/${slice.primary.square_link.uid}`"
         >

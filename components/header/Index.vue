@@ -14,7 +14,6 @@ const route = useRoute()
 const currentLocale = useCurrentLocale()
 const locales = ref(useLocales())
 
-
 const { client } = usePrismic()
 const { data: menu, refresh } = await useAsyncData('menuHeader', () => client.getByID('YmUadxMAACUAYQFr'))
 
@@ -34,6 +33,7 @@ watch(
   },
 )
 
+const showMenu = ref<boolean>(false)
 const submenu = ref<string>('')
 
 const showSubmenu = (value: string) => {
@@ -46,62 +46,111 @@ const hideSubmenu = () => {
 </script>
 <template>
     <header 
-        class="flex justify-between text-gray-100 font-bold px-4 md:px-0 sm:h-16"
+        class=" text-gray-100 font-bold"
         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
     >
-        <div></div>
-        <div class="flex">
-            <NuxtLink to="/" class="flex items-center">
-                <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
-            </NuxtLink>
-            <ul class="flex flex-wrap mb-0 marker:text-transparent relative">
-                <li 
-                    v-for="(menuLink, index) in menu.data.menu_links"
-                    :key="index"
-                    class="mx-4 my-2 sm:my-5"
-                    @mouseover="showSubmenu(menuLink.submenu.id)"
-                    @mouseleave="hideSubmenu()"
-                >
-                    <NuxtLink
-                        v-if="menuLink.link.uid" 
-                        :to="`/${currentLocale}/${menuLink.link.uid}`"
-                    >
-                        <PrismicText :field="menuLink.label" />    
-                    </NuxtLink>
-                    <NuxtLink v-else :to="menuLink.link.url" target="_blank">
-                        <PrismicText :field="menuLink.label" />    
-                    </NuxtLink>
-                    <ul 
-                        v-if="menuLink.submenu.links.length"
-                        class="absolute -mx-2"
-                        :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
-                        v-show="submenu === menuLink.submenu.id"
-                    >
-                        <li 
-                            v-for="(submenuLink, index) in menuLink.submenu.links"
-                            :key="index"
-                            class="mx-4 my-4"
-                        >
-                            <NuxtLink
-                                v-if="submenuLink.link.uid" 
-                                :to="`/${currentLocale}/${submenuLink.link.uid}`"
-                            >
-                                <PrismicText :field="submenuLink.label" />    
-                            </NuxtLink>
-                            <NuxtLink v-else :to="submenuLink.link.url" target="_blank">                
-                                <PrismicText :field="submenuLink.label" />    
-                            </NuxtLink>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="w-32 pr-5 py-5 flex justify-end content-center">
-            <template v-for="(language, index) of page.alternate_languages">
-                <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
-                    {{ locales[language.lang] }}
+        <div class="sm:hidden">
+            <div class="flex justify-between px-4 md:px-0 sm:h-16">
+                <NuxtLink to="/" class="flex items-center">
+                    <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
                 </NuxtLink>
-            </template>
+                <div class="mx-4 my-5">
+                    <span @click="showMenu = !showMenu">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <line x1="4" y1="6" x2="20" y2="6"></line>
+                            <line x1="4" y1="12" x2="20" y2="12"></line>
+                            <line x1="4" y1="18" x2="20" y2="18"></line>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <ul 
+                v-show="showMenu"
+                class="flex flex-col flex-wrap mb-0 marker:text-transparent relative"
+            >
+                    <li 
+                        v-for="(menuLink, index) in menu.data.menu_links"
+                        :key="index"
+                        class="mx-0 px-4 py-4 sm:my-5 border-b border-white text-xl"
+                        @mouseover="showSubmenu(menuLink.submenu.id)"
+                        @mouseleave="hideSubmenu()"
+                    >
+                        <NuxtLink
+                            v-if="menuLink.link.uid" 
+                            :to="`/${currentLocale}/${menuLink.link.uid}`"
+                        >
+                            <PrismicText :field="menuLink.label" />    
+                        </NuxtLink>
+                        <NuxtLink v-else :to="menuLink.link.url" target="_blank">
+                            <PrismicText :field="menuLink.label" />    
+                        </NuxtLink>
+                    </li>
+                    <div class="w-32 pr-5 py-5 flex justify-end content-center">
+                        <template v-for="(language, index) of page.alternate_languages">
+                            <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                                {{ locales[language.lang] }}
+                            </NuxtLink>
+                        </template>
+                    </div>
+                </ul>
+        </div>
+
+        <div class="hidden sm:flex justify-between px-4 md:px-0 sm:h-16">
+            <div></div>
+            <div class="flex">
+                <NuxtLink to="/" class="flex items-center">
+                    <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
+                </NuxtLink>
+                <ul class="flex flex-wrap mb-0 marker:text-transparent relative">
+                    <li 
+                        v-for="(menuLink, index) in menu.data.menu_links"
+                        :key="index"
+                        class="mx-4 my-2 sm:my-5"
+                        @mouseover="showSubmenu(menuLink.submenu.id)"
+                        @mouseleave="hideSubmenu()"
+                    >
+                        <NuxtLink
+                            v-if="menuLink.link.uid" 
+                            :to="`/${currentLocale}/${menuLink.link.uid}`"
+                        >
+                            <PrismicText :field="menuLink.label" />    
+                        </NuxtLink>
+                        <NuxtLink v-else :to="menuLink.link.url" target="_blank">
+                            <PrismicText :field="menuLink.label" />    
+                        </NuxtLink>
+                        <!-- <ul 
+                            v-if="menuLink.submenu.links.length"
+                            class="absolute -mx-2"
+                            :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
+                            v-show="submenu === menuLink.submenu.id"
+                        >
+                            <li 
+                                v-for="(submenuLink, index) in menuLink.submenu.links"
+                                :key="index"
+                                class="mx-4 my-4"
+                            >
+                                <NuxtLink
+                                    v-if="submenuLink.link.uid" 
+                                    :to="`/${currentLocale}/${submenuLink.link.uid}`"
+                                >
+                                    <PrismicText :field="submenuLink.label" />    
+                                </NuxtLink>
+                                <NuxtLink v-else :to="submenuLink.link.url" target="_blank">                
+                                    <PrismicText :field="submenuLink.label" />    
+                                </NuxtLink>
+                            </li>
+                        </ul> -->
+                    </li>
+                </ul>
+            </div>
+            <div class="w-32 pr-5 py-5 flex justify-end content-center">
+                <template v-for="(language, index) of page.alternate_languages">
+                    <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                        {{ locales[language.lang] }}
+                    </NuxtLink>
+                </template>
+            </div>
         </div>
     </header>
 </template>

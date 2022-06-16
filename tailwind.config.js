@@ -7,6 +7,9 @@ module.exports = {
       },
       gridAutoRows: {
         '1fr': '1fr',
+      },
+      fontFamily: {
+        'body': ['"Montserrat"'],
       }
     },
   },

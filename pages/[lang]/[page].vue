@@ -13,6 +13,7 @@ import {
     LazySlicesPageContactForm,
     LazySlicesPageContactAddress,
     LazySlicesPageContactFormSuccess,
+    LazySlicesPageSubmenu,
     LazySlicesButton
 } from "~~/.nuxt/components";
 
@@ -47,6 +48,7 @@ const components = defineSliceZoneComponents({
     'page_contact_form': LazySlicesPageContactForm,
     'page_contact_address': LazySlicesPageContactAddress,
     'page_contact_form_success': LazySlicesPageContactFormSuccess,
+    'page_submenu': LazySlicesPageSubmenu,
     'button': LazySlicesButton,
 })
 </script>
@@ -68,7 +70,7 @@ const components = defineSliceZoneComponents({
             :page="page"
             :bgColor="page?.data?.page_color"
         />
-        <div class="container max-w-screen-lg mx-auto px-4 md:px-0">
+        <div class="">
             <SliceZone
                 :slices="page.data.body"
                 :components="components"

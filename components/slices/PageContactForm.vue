@@ -21,7 +21,7 @@ const contactForm = reactive({
 })
 </script>
 <template>
-    <section class="mb-16">
+    <section class="container max-w-screen-lg mx-auto px-4 md:px-0 mb-16">
         <form 
             name="contact"
             method="POST"

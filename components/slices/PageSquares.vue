@@ -6,7 +6,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 const currentLocale = useCurrentLocale()
 </script>
 <template>
-    <section class="my-6">
+    <section class="container max-w-screen-lg mx-auto px-4 md:px-0 my-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <template
                 v-for="(item, index) in slice.items"

@@ -5,7 +5,7 @@ defineProps(getSliceComponentProps(["slice", "index", "slices", "context"]))
 
 </script>
 <template>
-    <section>
+    <section class="container max-w-screen-lg mx-auto px-4 md:px-0">
         <div class="bg-gray-200 text-center p-16 mb-10">
             <PrismicRichText :field="slice.primary.title" />
             <PrismicRichText :field="slice.primary.subtitle" />
