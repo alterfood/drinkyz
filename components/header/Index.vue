@@ -21,7 +21,9 @@ const { data: menu, refresh } = await useAsyncData('menuHeader', () => client.ge
 for (const item of menu.value.data.menu_links) {
     if(item.submenu.id) {
         const { data: submenu, refresh } = await useAsyncData(item.submenu.id, () => client.getByID(item.submenu.id))
-        item.submenu = submenu.value.data.menu_links
+        item.submenu.links = submenu.value.data.menu_links
+    } else {
+        item.submenu.links = []
     }
 }
 
@@ -70,13 +72,13 @@ const hideSubmenu = () => {
                         <PrismicText :field="menuLink.label" />    
                     </NuxtLink>
                     <ul 
-                        v-if="menuLink.submenu.length"
+                        v-if="menuLink.submenu.links.length"
                         class="absolute -mx-2"
                         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
                         v-show="submenu === menuLink.submenu.id"
                     >
                         <li 
-                            v-for="(submenuLink, index) in menuLink.submenu"
+                            v-for="(submenuLink, index) in menuLink.submenu.links"
                             :key="index"
                             class="mx-4 my-4"
                         >
