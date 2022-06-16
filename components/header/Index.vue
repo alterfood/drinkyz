@@ -49,7 +49,10 @@ const hideSubmenu = () => {
         class=" text-gray-100 font-bold"
         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
     >
-        <div class="sm:hidden">
+        <div 
+            class="sm:hidden flex flex-col"
+            :class="{ 'min-h-screen' : showMenu }"
+        >
             <div class="flex justify-between px-4 md:px-0 sm:h-16">
                 <NuxtLink to="/" class="flex items-center">
                     <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
@@ -65,10 +68,11 @@ const hideSubmenu = () => {
                     </span>
                 </div>
             </div>
-            <ul 
+            <div 
                 v-show="showMenu"
-                class="flex flex-col flex-wrap mb-0 marker:text-transparent relative"
-            >
+                class="flex flex-col justify-between flex-wrap mb-0 marker:text-transparent relative grow"
+            >   
+                <ul>
                     <li 
                         v-for="(menuLink, index) in menu.data.menu_links"
                         :key="index"
@@ -86,14 +90,15 @@ const hideSubmenu = () => {
                             <PrismicText :field="menuLink.label" />    
                         </NuxtLink>
                     </li>
-                    <div class="w-32 pr-5 py-5 flex justify-end content-center">
-                        <template v-for="(language, index) of page.alternate_languages">
-                            <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
-                                {{ locales[language.lang] }}
-                            </NuxtLink>
-                        </template>
-                    </div>
                 </ul>
+                <div class="w-full pr-5 py-5 flex justify-center content-center text-xl">
+                    <template v-for="(language, index) of page.alternate_languages">
+                        <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                            {{ locales[language.lang] }}
+                        </NuxtLink>
+                    </template>
+                </div>
+            </div>
         </div>
 
         <div class="hidden sm:flex justify-between px-4 md:px-0 sm:h-16">
