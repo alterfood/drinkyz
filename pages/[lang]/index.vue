@@ -49,6 +49,7 @@ useHead({
       <Html :lang="locales[page.lang]" />
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description" />
+       <Body class="font-body" />
     </Head>
     <Header 
       :page="page"

@@ -65,6 +65,7 @@ const components = defineSliceZoneComponents({
                 :href="`${config.BASE_URL}/${language.lang}/${language.uid}`"
                 :hreflang="locales[language.lang]"
             />
+             <Body class="font-body" />
         </Head>
         <Header 
             :page="page"
