@@ -12,11 +12,15 @@ const currentLocale = useCurrentLocale()
         >
             <div class="p-4 bg-gray-200 flex gap-6">
                 <div class="text-center">
-                    <PrismicRichText :field="slice.primary.square_title" class="text-3xl font-extrabold sm:hidden" />
+                    <h2 class="text-3xl font-extrabold sm:hidden">
+                        <PrismicText :field="slice.primary.square_title" />
+                    </h2>
                     <PrismicImage :field="slice.primary.square_image" />
                 </div>
                 <div class="flex-col justify-center p-5 hidden sm:block">
-                    <PrismicRichText :field="slice.primary.square_title" class="text-3xl font-extrabold" />
+                    <h2 class="text-3xl font-extrabold">
+                        <PrismicText :field="slice.primary.square_title" />
+                    </h2>
                     <PrismicRichText :field="slice.primary.square_text" />
                 </div>
             </div>

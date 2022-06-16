@@ -25,7 +25,7 @@ const components = defineSliceZoneComponents({
 });
 
 useHead({
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
   charset: 'utf-8',
   meta: [
     { name: 'msapplication-TileColor', content: '#da532c' },
