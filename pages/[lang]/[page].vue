@@ -93,7 +93,7 @@ const components = defineSliceZoneComponents({
     em {
         background-color: v-bind('page.data.page_color')!important;
         color: white;
-        @apply not-italic;
+        @apply not-italic px-2 py-1;
     }
 
     ul {
