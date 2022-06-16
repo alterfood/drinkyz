@@ -71,7 +71,8 @@ const hideSubmenu = () => {
                     </NuxtLink>
                     <ul 
                         v-if="menuLink.submenu.length"
-                        class="absolute bg-black -mx-2"
+                        class="absolute -mx-2"
+                        :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
                         v-show="submenu === menuLink.submenu.id"
                     >
                         <li 
@@ -103,7 +104,8 @@ const hideSubmenu = () => {
     </header>
 </template>
 <style>
-    header.color {
+    header.color,
+    ul.color {
         background-color: v-bind(bgColor);
     }
 </style>
