@@ -113,7 +113,7 @@ useHead({
     em {
         background-color: v-bind('page.data.page_color')!important;
         color: white;
-        @apply not-italic px-2 py-1;
+        @apply not-italic py-[0.15rem] px-[0.4rem];
     }
 
     ul {
