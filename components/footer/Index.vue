@@ -53,7 +53,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                     <img src="/logo.svg" alt="Drinkyz.com" class="sm:hidden mr-6 mb-2 sm:mb-2 h-28" />
                     <div>
                         <h4 class="font-bold mb-1">Contact</h4>
-                        hello@drinkyz.com<br/>
+                        info@drinkyz.com<br/>
                         +33 (0) 1 58 18 35 83<br/>
                         4 rue de Sèze 75009 Paris
                     </div>
