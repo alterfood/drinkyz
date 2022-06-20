@@ -111,7 +111,7 @@ const hideSubmenu = () => {
                     <li 
                         v-for="(menuLink, index) in menu.data.menu_links"
                         :key="index"
-                        class="mx-4 my-2 sm:my-5"
+                        class="mx-4 my-2 sm:my-5 list-none"
                         @mouseover="showSubmenu(menuLink.submenu.id)"
                         @mouseleave="hideSubmenu()"
                     >
