@@ -72,3 +72,32 @@ useHead({
     />
   </div>
 </template>
+
+<style scoped>
+    h2 {
+        @apply font-light;
+        @apply mb-2;
+    }
+
+    p{ 
+        @apply mb-2;
+    }
+
+    * :deep(em) {
+        background-color: v-bind('page.data.page_color')!important;
+        color: white;
+        @apply not-italic py-[0.15rem] px-[0.4rem];
+    }
+
+    ul {
+        @apply mb-6;
+    }
+
+    li {
+        @apply list-disc ml-4;
+    }
+
+    strong {
+        @apply font-extrabold;
+    }
+</style>
