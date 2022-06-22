@@ -87,7 +87,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                     </li>
                 </ul>
                 <p>
-                    <NuxtLink :to="'/mentions-legales'">
+                    <NuxtLink :to="`/${currentLocale}/mentions-legales`">
                         Mentions légales
                     </NuxtLink>
                 </p>
