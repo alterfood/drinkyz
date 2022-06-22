@@ -74,7 +74,7 @@ useHead({
         <Head>
             <Html :lang="locales[page.lang]" />
             <Title>{{ page?.data?.meta_title }}</Title>
-            <Meta name="description" :content="page?.data?.meta_description[0].text" />
+            <Meta name="description" :content="page?.data?.meta_description[0]?.text" />
             <Meta http-equiv="content-language" :content="page.lang" />
             <Link 
                 v-for="language of page.alternate_languages"
