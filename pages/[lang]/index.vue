@@ -51,10 +51,19 @@ useHead({
       <Meta name="description" :content="page?.data?.meta_description[0]?.text" />
       <Meta property="og:title" :content="page?.data?.meta_title" />
       <Meta property="og:description" :content="page?.data?.meta_description[0]?.text" />
-      <Meta property="og:image" content="" />
+      <Meta property="og:image" :content="page?.data?.og_image.url" />
       <Meta property="og:url" :content="`${config.BASE_URL}/${currentLocale}/${page.uid}`" />
       <Meta property="og:locale" :content="currentLocale.replace('-', '_')" />
       <meta property="og:type" content="website" />
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-J19L9FXBSM" />
+      <Script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-J19L9FXBSM');
+      </Script>
       <Body class="font-body" />
     </Head>
     <Header 
