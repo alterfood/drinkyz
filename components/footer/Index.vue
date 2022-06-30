@@ -69,7 +69,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                     <li 
                         v-for="(menuLink, Itemindex) in menu.data.menu_links"
                         :key="Itemindex"
-                        class="flex m-0"
+                        class="flex mx-0 my-2 sm:my-0"
                     >
                         <NuxtLink 
                             v-if="menuLink.link.uid" 
