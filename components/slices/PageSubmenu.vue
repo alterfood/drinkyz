@@ -30,7 +30,7 @@ watch(
                         class="flex flex-col justify-center"
                     >
                         <PrismicImage :field="item.image" class="h-20" />
-                        <p class="font-bold"><PrismicText :field="item.label" /></p>
+                        <p class="text-xs sm:text-base font-bold"><PrismicText :field="item.label" /></p>
                     </NuxtLink>
                 </div>
             </div>

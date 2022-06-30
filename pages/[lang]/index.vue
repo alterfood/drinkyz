@@ -48,6 +48,12 @@ useHead({
       <Html :lang="locales[page.lang]" />
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description[0]?.text" />
+      <Meta property="og:title" :content="page?.data?.meta_title" />
+      <Meta property="og:description" :content="page?.data?.meta_description[0]?.text" />
+      <Meta property="og:image" content="" />
+      <meta property="og:url" content="https://ahrefs.com/blog/open-graph-meta-tags/" />
+      <Meta property="og:locale" :content="currentLocale.replace('-', '_')" />
+      <meta property="og:type" content="website" />
       <Body class="font-body" />
     </Head>
     <Header 

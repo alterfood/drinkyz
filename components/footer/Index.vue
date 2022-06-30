@@ -31,7 +31,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                 </div>
                 <div class="col-span-3">
                     <h4 class="font-bold mb-1">{{ menuProducts.data.title[0].text }}</h4>
-                    <ul class="grid grid-cols-2 sm:grid-cols-3 text-sm marker:text-transparent">
+                    <ul class="grid grid-cols-2 sm:grid-cols-3 sm:text-sm marker:text-transparent">
                         <li 
                             v-for="(menuLink, Itemindex) in menuProducts.data.menu_links"
                             :key="Itemindex"
@@ -64,7 +64,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
             <div class="w-32">
 
             </div>
-            <div class="container max-w-screen-lg mx-auto text-center text-xs">
+            <div class="container max-w-screen-lg mx-auto text-center sm:text-xs">
                 <ul class="flex flex-wrap justify-center marker:text-transparent">
                     <li 
                         v-for="(menuLink, Itemindex) in menu.data.menu_links"

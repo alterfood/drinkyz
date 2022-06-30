@@ -75,6 +75,12 @@ useHead({
             <Html :lang="locales[page.lang]" />
             <Title>{{ page?.data?.meta_title }}</Title>
             <Meta name="description" :content="page?.data?.meta_description[0]?.text" />
+            <Meta property="og:title" :content="page?.data?.meta_title" />
+            <Meta property="og:description" :content="page?.data?.meta_description[0]?.text" />
+            <Meta property="og:image" content="" />
+            <Meta property="og:url" :content="`${config.BASE_URL}/${currentLocale}/${page.uid}`" />
+            <Meta property="og:locale" :content="currentLocale.replace('-', '_')" />
+            <meta property="og:type" content="website" />
             <Meta http-equiv="content-language" :content="page.lang" />
             <Link 
                 v-for="language of page.alternate_languages"

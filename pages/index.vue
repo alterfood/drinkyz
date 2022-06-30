@@ -5,6 +5,7 @@ import { LazySlicesPageTitle, LazySlicesPageText, LazySlicesPageImage, LazySlice
 const route = useRoute()
 const config = useRuntimeConfig()
 const locales = useLocales()
+const currentLocale = useCurrentLocale()
 
 const { client } = usePrismic()
 const { data: page, refresh } = await useAsyncData('home-fr', () => client.getByUID('page', 'home', { lang: 'fr-fr' }))
@@ -48,6 +49,12 @@ useHead({
       <Html lang="fr" />
       <Title>{{ page?.data?.meta_title }}</Title>
       <Meta name="description" :content="page?.data?.meta_description[0]?.text" />
+      <Meta property="og:title" :content="page?.data?.meta_title" />
+      <Meta property="og:description" :content="page?.data?.meta_description[0]?.text" />
+      <Meta property="og:image" content="" />
+      <Meta property="og:url" :content="`${config.BASE_URL}`" />
+      <Meta property="og:locale" :content="currentLocale.replace('-', '_')" />
+      <meta property="og:type" content="website" />
       <Link 
         v-for="language of page.alternate_languages"
         rel="alternate"
