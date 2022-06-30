@@ -3,6 +3,7 @@ import { defineSliceZoneComponents } from "@prismicio/vue"
 import { LazySlicesPageTitle, LazySlicesPageText, LazySlicesPageImage, LazySlicesPageSquares, LazySlicesPageBrands } from "~~/.nuxt/components";
 
 const route = useRoute()
+const config = useRuntimeConfig()
 const { client } = usePrismic()
 const currentLocale = useCurrentLocale()
 const locales = useLocales()
@@ -51,7 +52,7 @@ useHead({
       <Meta property="og:title" :content="page?.data?.meta_title" />
       <Meta property="og:description" :content="page?.data?.meta_description[0]?.text" />
       <Meta property="og:image" content="" />
-      <meta property="og:url" content="https://ahrefs.com/blog/open-graph-meta-tags/" />
+      <Meta property="og:url" :content="`${config.BASE_URL}/${currentLocale}/${page.uid}`" />
       <Meta property="og:locale" :content="currentLocale.replace('-', '_')" />
       <meta property="og:type" content="website" />
       <Body class="font-body" />
