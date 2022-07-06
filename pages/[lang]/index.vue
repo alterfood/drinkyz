@@ -55,15 +55,6 @@ useHead({
       <Meta property="og:url" :content="`${config.BASE_URL}/${currentLocale}/${page.uid}`" />
       <Meta property="og:locale" :content="currentLocale.replace('-', '_')" />
       <meta property="og:type" content="website" />
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-J19L9FXBSM" />
-      <Script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-J19L9FXBSM');
-      </Script>
       <Body class="font-body" />
     </Head>
     <Header 

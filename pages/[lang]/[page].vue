@@ -88,15 +88,6 @@ useHead({
                 :href="`${config.BASE_URL}/${language.lang}/${language.uid}`"
                 :hreflang="locales[language.lang]"
             />
-            <!-- Global site tag (gtag.js) - Google Analytics -->
-            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-J19L9FXBSM" />
-            <Script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'G-J19L9FXBSM');
-            </Script>
             <Body class="font-body" />
         </Head>
         <Header 
