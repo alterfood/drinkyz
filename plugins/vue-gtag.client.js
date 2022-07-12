@@ -4,7 +4,7 @@ import VueGtag from 'vue-gtag-next'
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(VueGtag, {
     property: {
-      id: 'G-J19L9FXBSM'
+      id: 'UA-207506426-1'
     },
     appName: 'drinkyz',
     enabled: true,
