@@ -1,27 +1,26 @@
 <script setup lang="ts">
 import { defineSliceZoneComponents } from "@prismicio/vue"
-import { 
-    LazySlicesPageTitle,
-    LazySlicesPageText,
-    LazySlicesPageImage,
-    LazySlicesPageImageText,
-    LazySlicesPageTextImage,
-    LazySlicesPageSquare,
-    LazySlicesPageSquares,
-    LazySlicesPageBrands,
-    LazySlicesPagePackshotsHeader,
-    LazySlicesPageContactForm,
-    LazySlicesPageContactAddress,
-    LazySlicesPageContactFormSuccess,
-    LazySlicesPageSubmenu,
-    LazySlicesButton
-} from "~~/.nuxt/components";
 
 const route = useRoute()
 const config = useRuntimeConfig()
 const currentLocale = useCurrentLocale()
 const locales = useLocales()
 const { client } = usePrismic()
+
+const LazySlicesPageTitle = resolveComponent('LazySlicesPageTitle')
+const LazySlicesPageText = resolveComponent('LazySlicesPageText')
+const LazySlicesPageImage = resolveComponent('LazySlicesPageImage')
+const LazySlicesPageSquare = resolveComponent('LazySlicesPageSquare')
+const LazySlicesPageSquares = resolveComponent('LazySlicesPageSquares')
+const LazySlicesPageBrands = resolveComponent('LazySlicesPageBrands')
+const LazySlicesPageImageText = resolveComponent('LazySlicesPageImageText')
+const LazySlicesPageTextImage = resolveComponent('LazySlicesPageTextImage')
+const LazySlicesPagePackshotsHeader = resolveComponent('LazySlicesPagePackshotsHeader')
+const LazySlicesPageContactForm = resolveComponent('LazySlicesPageContactForm')
+const LazySlicesPageContactAddress = resolveComponent('LazySlicesPageContactAddress')
+const LazySlicesPageContactFormSuccess = resolveComponent('LazySlicesPageContactFormSuccess')
+const LazySlicesPageSubmenu = resolveComponent('LazySlicesPageSubmenu')
+const LazySlicesButton = resolveComponent('LazySlicesButton')
 
 const { data: page, refresh } = await useAsyncData(
     route.fullPath as string,

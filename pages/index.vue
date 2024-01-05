@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { defineSliceZoneComponents } from "@prismicio/vue"
-import { LazySlicesPageTitle, LazySlicesPageText, LazySlicesPageImage, LazySlicesPageSquares, LazySlicesPageBrands } from "~~/.nuxt/components";
 
 const route = useRoute()
 const config = useRuntimeConfig()
 const locales = useLocales()
 const currentLocale = useCurrentLocale()
+
+const LazySlicesPageTitle = resolveComponent('LazySlicesPageTitle')
+const LazySlicesPageText = resolveComponent('LazySlicesPageText')
+const LazySlicesPageImage = resolveComponent('LazySlicesPageImage')
+const LazySlicesPageSquares = resolveComponent('LazySlicesPageSquares')
+const LazySlicesPageBrands = resolveComponent('LazySlicesPageBrands')
 
 const { client } = usePrismic()
 const { data: page, refresh } = await useAsyncData('home-fr', () => client.getByUID('page', 'home', { lang: 'fr-fr' }))
@@ -66,7 +71,7 @@ useHead({
       :page="page"
       :bgColor="page?.data?.page_color"
     />
-    <div class="container max-w-screen-lg mx-auto px-4 md:px-0">
+    <div class="container max-w-screen-lg px-4 mx-auto md:px-0">
         <SliceZone
             :slices="page.data.body"
             :components="components"
