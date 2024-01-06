@@ -57,9 +57,17 @@ useHead({
       <Meta property="og:title" :content="page?.data?.meta_title" />
       <Meta property="og:description" :content="page?.data?.meta_description[0]?.text" />
       <Meta property="og:image" :content="page?.data?.og_image.url" />
-      <Meta property="og:url" :content="`${config.BASE_URL}/${currentLocale}/${page.uid}`" />
+      <Meta property="og:url" :content="`${config.public.BASE_URL}/${currentLocale}/${page.uid}`" />
       <Meta property="og:locale" :content="currentLocale.replace('-', '_')" />
       <meta property="og:type" content="website" />
+      <Body class="font-body" />
+      <Meta http-equiv="content-language" :content="page.lang" />
+      <Link 
+          v-for="language of page.alternate_languages"
+          rel="alternate"
+          :href="`${config.public.BASE_URL}/${language.lang}/${language.uid}`"
+          :hreflang="locales[language.lang]"
+      />
       <Body class="font-body" />
     </Head>
     <Header 

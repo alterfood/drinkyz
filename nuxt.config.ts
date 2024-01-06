@@ -2,6 +2,9 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+    devtools: {
+        enabled: false
+    },
     nitro: {
         prerender: {
           routes: ['/fr-fr/contact-success', '/en-us/contact-success']
@@ -19,7 +22,9 @@ export default defineNuxtConfig({
     prismic: {
         endpoint: 'drinkyz'
     },
-    publicRuntimeConfig: {
-        BASE_URL: process.env.BASE_URL || 'https://drinkyz.com',
+    runtimeConfig: {
+        public: {
+            BASE_URL: process.env.BASE_URL || 'https://drinkyz.com',
+        }
     },
 })

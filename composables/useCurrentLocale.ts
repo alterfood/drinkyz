@@ -1,5 +1,11 @@
 export const useCurrentLocale = () => {
     const route = useRoute()
-    
-    return (route.fullPath as string).substring(1, 6) || 'fr-fr'
+
+    const pathArray = (route.fullPath as string).split('/')
+
+    if(pathArray.length == 2) {
+        return 'fr-fr'
+    }
+
+    return pathArray[1]
 }

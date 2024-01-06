@@ -15,16 +15,16 @@ const currentLocale = useCurrentLocale()
 const locales = ref(useLocales())
 
 const { client } = usePrismic()
-const { data: menu, refresh } = await useAsyncData('menuHeader', () => client.getByID('YmUadxMAACUAYQFr'))
+const { data: menu, refresh } = await useAsyncData(`menuHeader-${currentLocale}`, () => client.getByUID('menu', 'menu-header', { lang: currentLocale }))
 
-for (const item of menu.value.data.menu_links) {
-    if(item.submenu.id) {
-        const { data: submenu, refresh } = await useAsyncData(item.submenu.id, () => client.getByID(item.submenu.id))
-        item.submenu.links = submenu.value.data.menu_links
-    } else {
-        item.submenu.links = []
-    }
-}
+// for (const item of menu.value.data.menu_links) {
+//     if(item.submenu.id) {
+//         const { data: submenu, refresh } = await useAsyncData(item.submenu.id, () => client.getByID(item.submenu.id))
+//         item.submenu.links = submenu.value.data.menu_links
+//     } else {
+//         item.submenu.links = []
+//     }
+// }
 
 watch(
   () => [route.fullPath],
@@ -46,16 +46,16 @@ const hideSubmenu = () => {
 </script>
 <template>
     <header 
-        class=" text-gray-100 font-bold"
+        class="font-bold text-gray-100"
         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
     >
         <div 
-            class="sm:hidden flex flex-col"
+            class="flex flex-col sm:hidden"
             :class="{ 'min-h-screen' : showMenu }"
         >
             <div class="flex justify-between px-4 md:px-0 sm:h-16">
                 <NuxtLink to="/" class="flex items-center">
-                    <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
+                    <img src="/logo.svg" alt="Drinkyz.com" class="h-12 my-2 mr-10" />
                 </NuxtLink>
                 <div class="mx-4 my-5">
                     <span @click="showMenu = !showMenu">
@@ -70,13 +70,13 @@ const hideSubmenu = () => {
             </div>
             <div 
                 v-show="showMenu"
-                class="flex flex-col justify-between flex-wrap mb-0 marker:text-transparent relative grow"
+                class="relative flex flex-col flex-wrap justify-between mb-0 marker:text-transparent grow"
             >   
                 <ul>
                     <li 
                         v-for="(menuLink, index) in menu.data.menu_links"
                         :key="index"
-                        class="mx-0 px-4 py-4 sm:my-5 border-b border-white text-xl"
+                        class="px-4 py-4 mx-0 text-xl border-b border-white sm:my-5"
                         @mouseover="showSubmenu(menuLink.submenu.id)"
                         @mouseleave="hideSubmenu()"
                     >
@@ -91,9 +91,9 @@ const hideSubmenu = () => {
                         </NuxtLink>
                     </li>
                 </ul>
-                <div class="w-full pr-5 py-5 flex justify-center content-center text-xl">
+                <div class="flex content-center justify-center w-full py-5 pr-5 text-xl">
                     <template v-for="(language, index) of page.alternate_languages">
-                        <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                        <NuxtLink class="mr-3 uppercase" :to="`/${language.lang}/${language.uid}`">
                             {{ locales[language.lang] }}
                         </NuxtLink>
                     </template>
@@ -101,17 +101,17 @@ const hideSubmenu = () => {
             </div>
         </div>
 
-        <div class="hidden sm:flex justify-between px-4 md:px-0 sm:h-16">
+        <div class="justify-between hidden px-4 sm:flex md:px-0 sm:h-16">
             <div></div>
             <div class="flex">
                 <NuxtLink to="/" class="flex items-center">
-                    <img src="/logo.svg" alt="Drinkyz.com" class="mr-10 my-2 h-12" />
+                    <img src="/logo.svg" alt="Drinkyz.com" class="h-12 my-2 mr-10" />
                 </NuxtLink>
-                <ul class="flex flex-wrap mb-0 marker:text-transparent relative">
+                <ul class="relative flex flex-wrap mb-0 marker:text-transparent">
                     <li 
                         v-for="(menuLink, index) in menu.data.menu_links"
                         :key="index"
-                        class="mx-4 my-2 sm:my-5 list-none"
+                        class="mx-4 my-2 list-none sm:my-5"
                         @mouseover="showSubmenu(menuLink.submenu.id)"
                         @mouseleave="hideSubmenu()"
                     >
@@ -149,9 +149,9 @@ const hideSubmenu = () => {
                     </li>
                 </ul>
             </div>
-            <div class="w-32 pr-5 py-5 flex justify-end content-center">
+            <div class="flex content-center justify-end w-32 py-5 pr-5">
                 <template v-for="(language, index) of page.alternate_languages">
-                    <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                    <NuxtLink class="mr-3 uppercase" :to="`/${language.lang}/${language.uid}`">
                         {{ locales[language.lang] }}
                     </NuxtLink>
                 </template>
