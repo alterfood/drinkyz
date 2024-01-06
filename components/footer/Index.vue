@@ -20,17 +20,20 @@ const { data: menu } = await useAsyncData(`menuFooter-${currentLocale}`, () => c
 const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}`, () => client.getByUID('menu', 'menu-products', { lang: currentLocale }))
 </script>
 <template>
-    <footer 
-        class="text-white py-5 px-4 md:px-0"
+    <!-- <footer 
+        class="px-4 py-5 text-white md:px-0"
         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
+    > -->
+    <footer 
+        class="px-4 py-5 text-white md:px-0 color"
     >
-        <div class="container max-w-screen-lg mx-auto pb-10">
-            <div class="grid sm: grid-cols-3 md:grid-cols-5">
-                <div class="hidden sm:block sm:col-span-1 text-center sm:text-right">
-                    <img src="/logo.svg" alt="Drinkyz.com" class="mx-auto sm:mr-10 mb-6 sm:mb-2 h-36" />
+        <div class="container max-w-screen-lg pb-10 mx-auto">
+            <div class="grid grid-cols-3 sm: md:grid-cols-5">
+                <div class="hidden text-center sm:block sm:col-span-1 sm:text-right">
+                    <img src="/logo.svg" alt="Drinkyz.com" class="mx-auto mb-6 sm:mr-10 sm:mb-2 h-36" />
                 </div>
                 <div class="col-span-3">
-                    <h4 class="font-bold mb-1">{{ menuProducts.data.title[0].text }}</h4>
+                    <h4 class="mb-1 font-bold">{{ menuProducts.data.title[0].text }}</h4>
                     <ul class="grid grid-cols-2 sm:grid-cols-3 sm:text-sm marker:text-transparent">
                         <li 
                             v-for="(menuLink, Itemindex) in menuProducts.data.menu_links"
@@ -49,10 +52,10 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                         </li>
                     </ul>
                 </div>
-                <div class="col-span-3 sm:col-span-1 flex">
-                    <img src="/logo.svg" alt="Drinkyz.com" class="sm:hidden mr-6 mb-2 sm:mb-2 h-28" />
+                <div class="flex col-span-3 sm:col-span-1">
+                    <img src="/logo.svg" alt="Drinkyz.com" class="mb-2 mr-6 sm:hidden sm:mb-2 h-28" />
                     <div>
-                        <h4 class="font-bold mb-1">Contact</h4>
+                        <h4 class="mb-1 font-bold">Contact</h4>
                         info@drinkyz.com<br/>
                         +33 (0) 1 58 18 35 83<br/>
                         4 rue de Sèze 75009 Paris
@@ -60,7 +63,7 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                 </div>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row justify-between">
+        <div class="flex flex-col justify-between sm:flex-row">
             <div class="w-32">
 
             </div>
@@ -92,9 +95,9 @@ const { data: menuProducts } = await useAsyncData(`menuProducts-${currentLocale}
                     </NuxtLink>
                 </p>
             </div>
-            <div class="sm:w-32 sm:pr-5 flex justify-center sm:justify-end content-center text-center">
+            <div class="flex content-center justify-center text-center sm:w-32 sm:pr-5 sm:justify-end">
                 <template v-for="language of page.alternate_languages">
-                    <NuxtLink class="uppercase mr-3" :to="`/${language.lang}/${language.uid}`">
+                    <NuxtLink class="mr-3 uppercase" :to="`/${language.lang}/${language.uid}`">
                         {{ locales[language.lang] }}
                     </NuxtLink>
                 </template>

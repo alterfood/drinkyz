@@ -45,9 +45,12 @@ const hideSubmenu = () => {
 }
 </script>
 <template>
-    <header 
+    <!-- <header 
         class="font-bold text-gray-100"
         :class="[bgColor === '#000000' ? 'bg-gradient-to-b from-black to-menub' : 'color']"
+    > -->
+    <header 
+        class="font-bold text-gray-100 color"
     >
         <div 
             class="flex flex-col sm:hidden"
